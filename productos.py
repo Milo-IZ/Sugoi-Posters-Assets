@@ -91,69 +91,6 @@ base_url = f"https://cdn.jsdelivr.net/gh/{usuario}/{repositorio}@{rama}/"
 
 
 productos = []
-og_jobs = []  # (nombre_producto, ruta_imagen_local) para generar previews OG
-
-# ── Slug e imágenes Open Graph ───────────────────────────────────────────────
-_ACENTOS = {
-    "á": "a", "à": "a", "ä": "a", "â": "a",
-    "é": "e", "è": "e", "ë": "e", "ê": "e",
-    "í": "i", "ì": "i", "ï": "i", "î": "i",
-    "ó": "o", "ò": "o", "ö": "o", "ô": "o",
-    "ú": "u", "ù": "u", "ü": "u", "û": "u",
-    "ñ": "n",
-}
-
-def slugify(nombre: str) -> str:
-    """Replica Product.slug de Dart: minúsculas, sin acentos, [a-z0-9] y el
-    resto se vuelve '-' (colapsado y sin guiones en los extremos)."""
-    out = []
-    last_dash = False
-    for ch in nombre.lower():
-        n = _ACENTOS.get(ch, ch)
-        if re.match(r"[a-z0-9]", n):
-            out.append(n)
-            last_dash = False
-        elif not last_dash:
-            out.append("-")
-            last_dash = True
-    return re.sub(r"^-+|-+$", "", "".join(out))
-
-def generar_imagenes_og(jobs, salida="og", size=(1200, 630)):
-    """Genera un JPG <slug>.jpg por producto (poster centrado sobre fondo
-    blanco, 1200x630) para usar como og:image en los previews de redes."""
-    try:
-        from PIL import Image
-    except ImportError:
-        print("⚠️ Pillow no está instalado (pip install Pillow). Se omiten las imágenes OG.")
-        return
-    try:
-        resample = Image.Resampling.LANCZOS
-    except AttributeError:
-        resample = Image.LANCZOS
-
-    os.makedirs(salida, exist_ok=True)
-    w, h = size
-    vistos = set()
-    generadas = 0
-    for nombre, ruta in jobs:
-        slug = slugify(nombre)
-        if slug in vistos:
-            continue
-        vistos.add(slug)
-        try:
-            src = Image.open(ruta).convert("RGBA")
-        except Exception as e:
-            print(f"⚠️ OG: no se pudo abrir {ruta}: {e}")
-            continue
-        src.thumbnail((w, h), resample)
-        canvas = Image.new("RGB", (w, h), (255, 255, 255))
-        x = (w - src.width) // 2
-        y = (h - src.height) // 2
-        canvas.paste(src, (x, y), src)
-        canvas.save(os.path.join(salida, f"{slug}.jpg"), "JPEG", quality=85, optimize=True)
-        generadas += 1
-    print(f"🖼️  {generadas} imágenes OG generadas en '{salida}/'.")
-# ─────────────────────────────────────────────────────────────────────────────
 
 def limpiar_nombre(nombre_archivo):
     nombre = os.path.splitext(nombre_archivo)[0]
@@ -262,7 +199,6 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                 imagenes_dart = "[\n" + ",\n".join([f'      "{img}"' for img in imagenes]) + "\n    ]"
                 rutas_locales = [os.path.join(subcategoria_path, f) for f in archivos_pers]
                 fecha = _fecha_para(nombre_producto, rutas_locales)
-                og_jobs.append((nombre_producto, rutas_locales[0]))
                 productos.append(f'''  Product(
     nombre: "{nombre_producto}",
     precio: "{precio}",
@@ -303,7 +239,6 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                         imagenes_dart = "[\n" + ",\n".join([f'      "{img}"' for img in imagenes_variante]) + "\n    ]"
                         rutas_locales = archivos_variante
                         fecha = _fecha_para(nombre_producto, rutas_locales)
-                        og_jobs.append((nombre_producto, archivos_variante[0]))
                         productos.append(f'''  Product(
     nombre: "{nombre_producto}",
     precio: "{precio}",
@@ -332,7 +267,6 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                     nombre_producto = f"{nombre_categoria} {personaje}"
                     imagenes_dart = "[\n" + f'      "{url}"' + "\n    ]"
                     fecha = _fecha_para(nombre_producto, [ruta_local])
-                    og_jobs.append((nombre_producto, ruta_local))
                     productos.append(f'''  Product(
     nombre: "{nombre_producto}",
     precio: "{precio}",
@@ -366,7 +300,6 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                     nombre_producto = f"{nombre_categoria} {personaje}"
                     imagenes_dart = "[\n" + f'      "{url}"' + "\n    ]"
                     fecha = _fecha_para(nombre_producto, [ruta_elemento])
-                    og_jobs.append((nombre_producto, ruta_elemento))
                     productos.append(f'''  Product(
     nombre: "{nombre_producto}",
     precio: "{precio}",
@@ -390,7 +323,6 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                         imagenes_dart = "[\n" + ",\n".join([f'      "{img}"' for img in imagenes_internas]) + "\n    ]"
                         rutas_locales_int = archivos_internos
                         fecha = _fecha_para(nombre_producto, rutas_locales_int)
-                        og_jobs.append((nombre_producto, archivos_internos[0]))
                         
                         productos.append(f'''  Product(
     nombre: "{nombre_producto}",
@@ -414,10 +346,6 @@ nuevos = [p for p in productos if p.split('dateAdded: "')[1].split('"')[0] not i
 n_nuevos = sum(1 for p in productos
                if p.split('nombre: "')[1].split('"')[0] not in _fechas_existentes)
 print(f"✅ Archivo 'products.dart' generado con {len(productos)} productos.")
-
-# --- GENERAR IMÁGENES OG (preview de redes sociales) ---
-generar_imagenes_og(og_jobs)
-
 if n_nuevos:
     print(f"   🆕 {n_nuevos} producto(s) nuevo(s) → dateAdded asignado por mtime de archivos.")
 else:
