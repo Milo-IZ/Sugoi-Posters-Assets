@@ -5282,7 +5282,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Jujutsu_Kaisen/Gojo_6/Gojo__15/Gojo__15.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Jujutsu_Kaisen/Gojo_6/Gojo_15/Gojo_15.webp"
     ],
     subcategoria: "Jujutsu Kaisen",
     dateAdded: "2026-08-17",
