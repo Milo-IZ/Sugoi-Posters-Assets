@@ -1,0 +1,11 @@
+# Cache and backup
+.comprimir_cache.json
+_backup_imagenes/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
