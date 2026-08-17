@@ -433,6 +433,10 @@ def main():
         help="Ignorar caché y procesar todas las imágenes"
     )
     parser.add_argument(
+        "--recomprimir", action="store_true",
+        help="Forzar recompresión de imágenes que ya están en el formato destino"
+    )
+    parser.add_argument(
         "-i", "--interactivo", action="store_true",
         help="Forzar menú interactivo paso a paso"
     )
@@ -450,6 +454,7 @@ def main():
         hacer_backup, eliminar_original = preguntar_opciones_adicionales()
         dry_run = False
         forzar = False
+        recomprimir = args.recomprimir
     elif args.interactivo or (args.directorio is None and args.formato is None):
         print("\n" + "=" * 65)
         print("   🖼️  CONVERSOR DE IMÁGENES — SUGOI ASSETS")
@@ -461,6 +466,7 @@ def main():
         hacer_backup, eliminar_original = preguntar_opciones_adicionales()
         dry_run = False
         forzar = False
+        recomprimir = args.recomprimir
     else:
         # Modo línea de comandos
         dir_seleccionado = Path(args.directorio).resolve() if args.directorio else raiz_proyecto
@@ -480,6 +486,7 @@ def main():
 
         dry_run = args.dry_run
         forzar = args.forzar
+        recomprimir = args.recomprimir
 
     if not dir_seleccionado.exists() or not dir_seleccionado.is_dir():
         print(f"❌ Directorio no válido: {dir_seleccionado}")
@@ -503,6 +510,7 @@ def main():
     print(f"   🗑️  Eliminar orig.   : {'Sí (al cambiar extensión)' if eliminar_original else 'No'}")
     print(f"   🧪 Dry-run (prueba) : {'SÍ — sin cambios reales' if dry_run else 'No'}")
     print(f"   ⚡ Caché            : {'Ignorado (--forzar)' if forzar else f'{len(cache)} registros'}")
+    print(f"   🔄 Recompresión     : {'Habilitada (--recomprimir)' if recomprimir else 'Deshabilitada (omite imágenes en formato destino)'}")
     print(f"{'='*65}\n")
 
     todas = buscar_imagenes(dir_seleccionado, excluir=backup_dir)
@@ -514,20 +522,30 @@ def main():
     # Filtrar imágenes pendientes
     pendientes = []
     omitidas = 0
+    ya_en_formato = 0
     ext_dest = f".{formato_destino.lower()}"
 
     for img in todas:
         dest = img.with_suffix(ext_dest)
+        es_mismo_formato = (img.suffix.lower() == ext_dest)
+
+        # Omitir si ya está en el formato deseado y no se pidió recomprimir
+        if es_mismo_formato and not recomprimir:
+            ya_en_formato += 1
+            continue
+
         if not forzar and ya_procesado(img, dest, dir_seleccionado, cache):
             omitidas += 1
         else:
             pendientes.append(img)
 
+    if ya_en_formato:
+        print(f"✨  {ya_en_formato} imagen(es) ya en formato {formato_destino.upper()} — omitidas")
     if omitidas:
         print(f"⏭️  {omitidas} imagen(es) sin cambios — omitidas por caché")
 
     if not pendientes:
-        print("✅ Todo está al día. No hay imágenes nuevas o modificadas que procesar.\n")
+        print("✅ Todo está al día. No hay imágenes nuevas que procesar.\n")
         sys.exit(0)
 
     print(f"📸 {len(pendientes)} imagen(es) listas para procesar...\n")
