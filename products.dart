@@ -4595,56 +4595,56 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Last dance 1 camisa #1",
+    nombre: "Camisa Last Dance #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Last_dance_1 camisa/Last_dance_1 camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Last_dance_1/Last_dance_1.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Mbappe 1 Camisa #1",
+    nombre: "Camisa Mbappe #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Mbappe_1 Camisa/Mbappe_1 Camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Mbappe_1/Mbappe_1.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Messi 1 camisa #1",
+    nombre: "Camisa Messi #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Messi 1 camisa/Messi 1 camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Messi_1/Messi_1.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Messi 2 camisa #1",
+    nombre: "Camisa Messi #2",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Messi 2 camisa/Messi 2 camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Messi_2/Messi_2.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Messi 3 camisa #1",
+    nombre: "Camisa Messi #3",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Messi 3 camisa/Messi 3 camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Messi_3/Messi_3.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
@@ -4661,23 +4661,23 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Ronaldo 1 Camisa #1",
+    nombre: "Camisa Ronaldo #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Ronaldo 1 Camisa/Ronaldo 1 Camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Ronaldo_1/Ronaldo_1.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Yamal 1 camisa #1",
+    nombre: "Camisa Yamal #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Yamal 1 camisa/Yamal 1 camisa.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Futbol/Yamal_1/Yamal_1.webp"
     ],
     subcategoria: "Futbol",
     dateAdded: "2026-08-17",
@@ -5282,7 +5282,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Jujutsu_Kaisen/Gojo_6/Gojo__15/Gojo_#15/Gojo_#15.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Jujutsu_Kaisen/Gojo_6/Gojo__15/Gojo__15.webp"
     ],
     subcategoria: "Jujutsu Kaisen",
     dateAdded: "2026-08-17",
@@ -9324,7 +9324,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Link_#2/Link_#2.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Link_2/Link_2.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
@@ -9335,7 +9335,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Link_#3/Link_#3.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Link_3/Link_3.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
@@ -9346,7 +9346,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Link_#4/Link_#4.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Link_4/Link_4.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
@@ -9390,7 +9390,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/The_Legend_of_Zelda_Tears_of_the_Kingdom#2/The_Legend_of_Zelda_Tears_of_the_Kingdom#2.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/The_Legend_of_Zelda_Tears_of_the_Kingdom_2/The_Legend_of_Zelda_Tears_of_the_Kingdom_2.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
@@ -9423,7 +9423,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Zelda_#2/Zelda_#2.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Zelda_2/Zelda_2.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
@@ -9434,7 +9434,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Zelda_#3/Zelda_#3.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Zelda_3/Zelda_3.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
@@ -9445,7 +9445,7 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Zelda_#4/Zelda_#4.webp"
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/The_Legend_of_Zelda/Zelda_4/Zelda_4.webp"
     ],
     subcategoria: "The Legend Of Zelda",
     dateAdded: "2026-08-17",
