@@ -28,11 +28,18 @@ def buscar_imagenes_rec(carpeta):
 usuario = "Milo-IZ"
 repositorio = "sugoi-posters-assets"
 rama = "main"
-carpeta_base = "."
+
+# Carpeta base del repositorio (siempre absoluta basada en la ubicación del script)
+DIR_SCRIPT = os.path.dirname(os.path.abspath(__file__))
+carpeta_base = DIR_SCRIPT
 
 # Ruta al products.dart existente (para conservar fechas ya registradas).
-# Puede ser relativa al lugar desde donde se ejecuta el script.
-PRODUCTOS_DART_EXISTENTE = r"D:\Proyectos\sugoi_posters_deploys\lib\data\products.dart"
+RUTAS_BUSQUEDA_DART = [
+    os.path.join(DIR_SCRIPT, "..", "SugoiPosters-Web-App", "lib", "data", "products.dart"),
+    os.path.join(DIR_SCRIPT, "products.dart"),
+    r"D:\Proyectos\sugoi_posters_deploys\lib\data\products.dart",
+]
+PRODUCTOS_DART_EXISTENTE = next((p for p in RUTAS_BUSQUEDA_DART if os.path.exists(p)), RUTAS_BUSQUEDA_DART[0])
 
 # ── Cargar fechas ya registradas ─────────────────────────────────────────────
 def _leer_fechas_existentes(path: str) -> dict[str, str]:
@@ -335,18 +342,32 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
   ),''')
 
 # --- GENERAR ARCHIVO DART ---
-with open("products.dart", "w", encoding="utf-8") as f:
+output_local = os.path.join(DIR_SCRIPT, "products.dart")
+with open(output_local, "w", encoding="utf-8") as f:
     f.write("import '../models/product.dart';\n\n")
     f.write("const List<Product> productos = [\n")
     f.write("\n".join(productos))
     f.write("\n];\n")
+
+# Sincronizar automáticamente con SugoiPosters-Web-App si la carpeta existe
+output_webapp = os.path.join(DIR_SCRIPT, "..", "SugoiPosters-Web-App", "lib", "data", "products.dart")
+webapp_sync_ok = False
+if os.path.exists(os.path.dirname(output_webapp)):
+    try:
+        import shutil
+        shutil.copyfile(output_local, output_webapp)
+        webapp_sync_ok = True
+    except Exception as e:
+        print(f"⚠️ No se pudo copiar a Web-App: {e}")
 
 nuevos = [p for p in productos if p.split('dateAdded: "')[1].split('"')[0] not in _fechas_existentes.values()
           or any(n not in _fechas_existentes for n in [p.split('nombre: "')[1].split('"')[0]])]
 n_nuevos = sum(1 for p in productos
                if p.split('nombre: "')[1].split('"')[0] not in _fechas_existentes)
 print(f"✅ Archivo 'products.dart' generado con {len(productos)} productos.")
+if webapp_sync_ok:
+    print(f"🔄 Sincronizado automáticamente en: {os.path.normpath(output_webapp)}")
 if n_nuevos:
     print(f"   🆕 {n_nuevos} producto(s) nuevo(s) → dateAdded asignado por mtime de archivos.")
 else:
-    print(f"   ✔  Sin productos nuevos detectados.")
+    print(f"   ✔  Sin productos nuevos detectados.")

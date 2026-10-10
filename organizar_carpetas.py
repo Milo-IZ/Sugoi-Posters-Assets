@@ -1,12 +1,22 @@
+import os
 import shutil
+import sys
 import time
 from pathlib import Path
 
-# Extensiones válidas
+# Evitar UnicodeEncodeError con emojis en consolas Windows (cp1252)
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
+# Extensiones válidas de imagen
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".bmp", ".gif", ".tiff"}
 
-# Carpetas que no queremos tocar
-IGNORED_DIR_NAMES = {".git", "__pycache__"}
+# Carpetas del sistema a ignorar
+IGNORED_DIR_NAMES = {".git", "__pycache__", ".vscode", ".agents", "build", ".dart_tool"}
+
+DIR_BASE = Path(__file__).resolve().parent
 
 
 # ==========================
@@ -69,9 +79,9 @@ def unique_file_path(path: Path) -> Path:
 
 def is_already_organized(folder: Path) -> bool:
     """
-    Estructura válida:
+    Estructura válida canonical:
         Carpeta/
-            Carpeta.png
+            Carpeta.ext
     """
     images = direct_images(folder)
     subdirs = direct_dirs(folder)
@@ -86,11 +96,48 @@ def is_already_organized(folder: Path) -> bool:
 
 
 # ==========================
+# SELECTOR CON EXPLORADOR
+# ==========================
+
+def abrir_explorador_carpetas(directorio_inicial: Path | None = None) -> Path | None:
+    """
+    Abre una ventana nativa del explorador de archivos para elegir una carpeta.
+    Pone la ventana al frente de la consola.
+    """
+    try:
+        import tkinter as tk
+        from tkinter import filedialog
+
+        root = tk.Tk()
+        root.withdraw()
+        # Asegura que aparezca al frente
+        root.attributes("-topmost", True)
+
+        init_dir = str(directorio_inicial) if directorio_inicial and directorio_inicial.exists() else str(DIR_BASE)
+
+        print("\n📂 Abriendo explorador de archivos para seleccionar carpeta...")
+        carpeta = filedialog.askdirectory(
+            title="Selecciona la carpeta que deseas organizar",
+            initialdir=init_dir
+        )
+        root.destroy()
+
+        if carpeta:
+            return Path(carpeta)
+        return None
+    except Exception as e:
+        print(f"⚠️ No se pudo abrir el explorador gráfico: {e}")
+        return None
+
+
+# ==========================
 # ANÁLISIS
 # ==========================
 
 def analyze_tree(folder: Path):
-    print(f"\nAnalizando: {folder}\n")
+    print(f"\n=================================")
+    print(f"🔍 ANALIZANDO: {folder}")
+    print(f"=================================\n")
 
     all_dirs = get_all_dirs(folder)
 
@@ -107,30 +154,47 @@ def analyze_tree(folder: Path):
         elif imgs:
             loose_with_images.append((d, len(imgs), len(subs)))
         else:
-            if not subs:
+            if not subs and d != folder:
                 empty_dirs.append(d)
 
-    print("Carpetas ya organizadas:")
+    print(f"✅ Carpetas ya organizadas ({len(organized)}):")
     if organized:
-        for d in organized:
-            print(f"  [OK] {d.relative_to(folder)}")
+        # Mostrar las primeras 10 si son muchas
+        for d in organized[:10]:
+            try:
+                rel = d.relative_to(folder)
+            except Exception:
+                rel = d.name
+            print(f"  [OK] {rel}")
+        if len(organized) > 10:
+            print(f"  ... y {len(organized) - 10} más.")
     else:
         print("  Ninguna")
 
-    print("\nCarpetas con imágenes sueltas:")
+    print(f"\n⚠️  Carpetas con imágenes sueltas por organizar ({len(loose_with_images)}):")
+    total_sueltas = sum(count for _, count, _ in loose_with_images)
     if loose_with_images:
         for d, img_count, sub_count in loose_with_images:
-            print(f"  [NO] {d.relative_to(folder)} -> {img_count} imagen(es), {sub_count} subcarpeta(s)")
+            try:
+                rel = d.relative_to(folder)
+            except Exception:
+                rel = d.name
+            print(f"  [SUELTAS] {rel} -> {img_count} imagen(es), {sub_count} subcarpeta(s)")
     else:
-        print("  Ninguna")
+        print("  Ninguna (¡Todo limpio!)")
 
-    print("\nCarpetas vacías:")
     if empty_dirs:
-        for d in empty_dirs:
-            if d != folder:
-                print(f"  [VACÍA] {d.relative_to(folder)}")
-    else:
-        print("  Ninguna")
+        print(f"\n📁 Carpetas vacías ({len(empty_dirs)}):")
+        for d in empty_dirs[:5]:
+            try:
+                rel = d.relative_to(folder)
+            except Exception:
+                rel = d.name
+            print(f"  [VACÍA] {rel}")
+        if len(empty_dirs) > 5:
+            print(f"  ... y {len(empty_dirs) - 5} más.")
+
+    return total_sueltas
 
 
 # ==========================
@@ -150,7 +214,7 @@ def organize_tree(folder: Path):
     created_folders = 0
     skipped_organized = 0
 
-    print(f"\nOrganizando árbol completo en: {folder}\n")
+    print(f"\n🚀 Organizando árbol en: {folder}\n")
 
     for current_dir in all_dirs:
         images = direct_images(current_dir)
@@ -158,12 +222,17 @@ def organize_tree(folder: Path):
         if not images:
             continue
 
-        # Si ya está perfectamente organizada, no la tocamos
+        # Si ya está organizada perfectamente (1 imagen cuyo stem coincide con el nombre de la carpeta y sin subcarpetas)
         if is_already_organized(current_dir):
             skipped_organized += 1
             continue
 
         for img in images:
+            # Si el archivo ya está en una carpeta que tiene exactamente su mismo nombre (y es la única imagen)
+            if img.stem == current_dir.name and len(images) == 1:
+                skipped_organized += 1
+                continue
+
             target_folder = current_dir / img.stem
             if not target_folder.exists():
                 target_folder.mkdir(parents=True, exist_ok=True)
@@ -177,21 +246,21 @@ def organize_tree(folder: Path):
             try:
                 rel_src = img.relative_to(folder)
             except Exception:
-                rel_src = img
+                rel_src = img.name
 
             try:
                 rel_dst = target_file.relative_to(folder)
             except Exception:
-                rel_dst = target_file
+                rel_dst = target_file.name
 
             print(f"✓ {rel_src} -> {rel_dst}")
 
     elapsed = round(time.time() - start, 2)
 
     print("\n=================================")
-    print("RESUMEN")
+    print("📊 RESUMEN DE ORGANIZACIÓN")
     print("=================================")
-    print(f"Carpeta raíz      : {folder.name}")
+    print(f"Carpeta procesada : {folder}")
     print(f"Carpetas creadas  : {created_folders}")
     print(f"Archivos movidos  : {moved_files}")
     print(f"Ya organizadas    : {skipped_organized}")
@@ -200,32 +269,22 @@ def organize_tree(folder: Path):
 
 
 # ==========================
-# SELECCIÓN DE CARPETA
+# GESTIÓN DE CARPETA SELECCIONADA
 # ==========================
 
-def choose_folder(root: Path):
-    folders = get_top_level_folders(root)
+def procesar_carpeta(carpeta: Path):
+    """Analiza la carpeta y permite organizarla de inmediato."""
+    sueltas = analyze_tree(carpeta)
 
-    print("\n=================================")
-    print("CARPETAS DISPONIBLES")
-    print("=================================")
+    if sueltas == 0:
+        print("\n✅ Todas las imágenes ya están organizadas en sus respectivas subcarpetas.")
+        return
 
-    print("0. Usar la raíz completa")
-    for i, folder in enumerate(folders, start=1):
-        print(f"{i}. {folder.name}")
-
-    while True:
-        option = input("\nSeleccione una carpeta: ").strip()
-
-        if option == "0" or option == "":
-            return root
-
-        if option.isdigit():
-            index = int(option) - 1
-            if 0 <= index < len(folders):
-                return folders[index]
-
-        print("Opción inválida.")
+    confirm = input(f"\n¿Deseas organizar las {sueltas} imágenes sueltas en subcarpetas ahora? (S/n): ").strip().lower()
+    if confirm in ("", "s", "si", "y", "yes"):
+        organize_tree(carpeta)
+    else:
+        print("❌ Organización cancelada.")
 
 
 # ==========================
@@ -233,52 +292,74 @@ def choose_folder(root: Path):
 # ==========================
 
 def main():
-    print("=== ORGANIZADOR DE IMÁGENES ===")
+    print("==========================================")
+    print("   ORGANIZADOR DE CARPETAS DE ASSETS")
+    print("==========================================")
 
-    root_input = input("Ruta raíz (Enter para usar la carpeta actual): ").strip()
-    root = Path(root_input) if root_input else Path.cwd()
+    # 1. Si se pasa una ruta como argumento por línea de comandos (ej. arrastrar carpeta sobre el script)
+    if len(sys.argv) > 1:
+        ruta_arg = Path(sys.argv[1].strip('"'))
+        if ruta_arg.is_dir():
+            print(f"📁 Usando carpeta pasada por argumento: {ruta_arg}")
+            procesar_carpeta(ruta_arg)
+            return
 
-    if not root.exists() or not root.is_dir():
-        print(f"\nLa ruta no existe o no es una carpeta: {root}")
-        return
+    # 2. De una vez: abrir el explorador nativo de Windows al inicio
+    carpeta_inicial = abrir_explorador_carpetas(DIR_BASE)
+    if carpeta_inicial and carpeta_inicial.is_dir():
+        print(f"📁 Carpeta elegida: {carpeta_inicial}")
+        procesar_carpeta(carpeta_inicial)
+    else:
+        print("ℹ️ No se seleccionó carpeta en el explorador inicial.")
+
+    # 3. Menú interactivo por si desea hacer más operaciones
+    carpeta_actual = carpeta_inicial if (carpeta_inicial and carpeta_inicial.is_dir()) else DIR_BASE
 
     while True:
-        print("\n=================================")
-        print(" ORGANIZADOR DE IMÁGENES")
-        print("=================================")
-        print(f"Raíz: {root}")
-        print("=================================")
-        print("1. Analizar carpeta")
-        print("2. Organizar carpeta")
-        print("3. Analizar TODAS las carpetas principales")
-        print("4. Organizar TODAS las carpetas principales")
+        print("\n==========================================")
+        print(" OPCIONES")
+        print("==========================================")
+        print(f"Carpeta actual: {carpeta_actual}")
+        print("------------------------------------------")
+        print("1. Elegir otra carpeta con el Explorador de Windows 📂")
+        print("2. Organizar la carpeta actual")
+        print("3. Analizar la carpeta actual")
+        print("4. Escribir ruta manualmente")
         print("5. Salir")
-        print("=================================")
+        print("==========================================")
 
-        option = input("Seleccione una opción: ").strip()
+        opcion = input("Seleccione una opción [1-5]: ").strip()
 
-        if option == "1":
-            folder = choose_folder(root)
-            analyze_tree(folder)
+        if opcion == "1":
+            nueva_carpeta = abrir_explorador_carpetas(carpeta_actual)
+            if nueva_carpeta and nueva_carpeta.is_dir():
+                carpeta_actual = nueva_carpeta
+                print(f"📁 Carpeta seleccionada: {carpeta_actual}")
+                procesar_carpeta(carpeta_actual)
+            else:
+                print("Operación cancelada o carpeta no válida.")
 
-        elif option == "2":
-            folder = choose_folder(root)
-            organize_tree(folder)
+        elif opcion == "2":
+            organize_tree(carpeta_actual)
 
-        elif option == "3":
-            analyze_tree(root)
+        elif opcion == "3":
+            analyze_tree(carpeta_actual)
 
-        elif option == "4":
-            confirm = input("\n¿Seguro que desea organizar todo? (s/n): ").strip().lower()
-            if confirm == "s":
-                organize_tree(root)
+        elif opcion == "4":
+            ruta_input = input("\nIngrese la ruta de la carpeta: ").strip().strip('"')
+            p = Path(ruta_input)
+            if p.is_dir():
+                carpeta_actual = p
+                procesar_carpeta(carpeta_actual)
+            else:
+                print(f"❌ La ruta no existe o no es una carpeta: {ruta_input}")
 
-        elif option == "5":
-            print("\nHasta luego.")
+        elif opcion in ("5", "q", "exit", "salir"):
+            print("\n¡Hasta luego!")
             break
 
         else:
-            print("Opción inválida.")
+            print("Opción no válida.")
 
 
 if __name__ == "__main__":

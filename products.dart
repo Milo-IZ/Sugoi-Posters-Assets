@@ -14,6 +14,116 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
+    nombre: "Camisa Diarios de la Boticaria #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/Diarios_de_la_Boticaria_1/Diarios_de_la_Boticaria_1.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jinshi & MaoMao #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/Jinshi_&_MaoMao_1/Jinshi_&_MaoMao_1.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jinshi & MaoMao #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/Jinshi_&_MaoMao_2/Jinshi_&_MaoMao_2.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jinshi #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/Jinshi_1/Jinshi_1.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa MaoMao #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/MaoMao_1/MaoMao_1.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa MaoMao #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/MaoMao_2/MaoMao_2.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa MaoMao #3",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/MaoMao_3/MaoMao_3.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa MaoMao #4",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/MaoMao_4/MaoMao_4.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa MaoMao #5",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/MaoMao_5/MaoMao_5.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa MaoMao #6",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/Apothecary_Diaries/MaoMao_6/MaoMao_6.webp"
+    ],
+    subcategoria: "Apothecary Diaries",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
     nombre: "Camisa 3-Titanes #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
@@ -4595,7 +4705,7 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Last Dance #1",
+    nombre: "Camisa Last dance #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
@@ -4923,6 +5033,358 @@ const List<Product> productos = [
     ],
     subcategoria: "Gachiakuta",
     dateAdded: "2026-08-17",
+  ),
+  Product(
+    nombre: "Camisa Avdol #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Avdol_1/Avdol_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Crusaders #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Crusaders_1/Crusaders_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Dio #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Dio_1/Dio_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Echos Act-3 #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Echos_Act-3_1/Echos_Act-3_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Giorno #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Giorno_1/Giorno_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Giorno #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Giorno_2/Giorno_2.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jodio Joestar #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jodio_Joestar_1/Jodio_Joestar_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jojo Stardust Crusaders #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jojo_Stardust_Crusaders_1/Jojo_Stardust_Crusaders_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jolyne #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jolyne_1/Jolyne_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jonathan #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jonathan_1/Jonathan_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jonathan #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jonathan_2/Jonathan_2.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Joseph & Ceasar #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Joseph_&_Ceasar_1/Joseph_&_Ceasar_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Joseph #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Joseph_1/Joseph_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Joseph #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Joseph_2/Joseph_2.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Joseph #3",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Joseph_3/Joseph_3.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Josuke #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Josuke_1/Josuke_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Josuke #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Josuke_2/Josuke_2.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_1/Jotaro_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_2/Jotaro_2.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #3",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_3/Jotaro_3.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #4",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_4/Jotaro_4.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #5",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_5/Jotaro_5.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #6",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_6/Jotaro_6.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #7",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_7/Jotaro_7.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Jotaro #8",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Jotaro_8/Jotaro_8.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Kakyoin #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Kakyoin_1/Kakyoin_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Kira Yoshikage & Josuke Joestar #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Kira_Yoshikage_&_Josuke_Joestar_1/Kira_Yoshikage_&_Josuke_Joestar_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Mascara Vampiro #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Mascara_Vampiro_1/Mascara_Vampiro_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Polnareff #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Polnareff_1/Polnareff_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Steel Ball Run #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Steel_Ball_Run_1/Steel_Ball_Run_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Stone Ocean #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Stone_Ocean_1/Stone_Ocean_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
+  ),
+  Product(
+    nombre: "Camisa Trish #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://cdn.jsdelivr.net/gh/Milo-IZ/sugoi-posters-assets@main/C-a/JoJo's_Bizarre_Adventure/Trish_1/Trish_1.webp"
+    ],
+    subcategoria: "Jojo'S Bizarre Adventure",
+    dateAdded: "2026-10-09",
   ),
   Product(
     nombre: "Camisa Choso #1",
