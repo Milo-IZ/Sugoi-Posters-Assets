@@ -163,7 +163,8 @@ def convertir_imagen(
     calidad: int,
     backup_dir: Path | None,
     eliminar_original: bool,
-    dry_run: bool
+    dry_run: bool,
+    max_lado: int | None = 1400,
 ) -> dict:
     """
     Convierte una imagen al formato y calidad deseados.
@@ -178,12 +179,16 @@ def convertir_imagen(
         "tam_nuevo": 0,
         "ruta_salida": ruta_salida,
         "mismo_archivo": mismo_archivo,
+        "redimensionada": False,
+        "dim_orig": None,
+        "dim_nueva": None,
         "error": None,
     }
 
     try:
         with Image.open(ruta) as img:
             img.load()
+            res["dim_orig"] = img.size
 
             # Normalizar modos de color para preservar transparencia o RGB limpio
             modo = img.mode
@@ -198,46 +203,44 @@ def convertir_imagen(
                 elif modo not in ("RGB", "RGBA", "L", "LA"):
                     img = img.convert("RGB")
 
-            # Modo simulación (Dry-Run)
-            if dry_run:
-                from io import BytesIO
-                buf = BytesIO()
-                if formato_destino.lower() == "png":
-                    img.save(buf, format="PNG", optimize=True, compress_level=6)
-                else:
-                    if calidad >= 100:
-                        img.save(buf, format="WEBP", quality=100, method=6, lossless=True)
-                    else:
-                        img.save(buf, format="WEBP", quality=calidad, method=6)
-                res["tam_nuevo"] = len(buf.getvalue())
-                return res
+            if max_lado and max_lado > 0 and max(img.size) > max_lado:
+                img.thumbnail((max_lado, max_lado), Image.Resampling.LANCZOS)
+                res["redimensionada"] = True
+            res["dim_nueva"] = img.size
 
-            # Realizar backup si está configurado
-            if backup_dir:
-                try:
-                    rel_backup = ruta.relative_to(backup_dir.parent)
-                except ValueError:
-                    rel_backup = ruta.name
-                dest_backup = backup_dir / rel_backup
-                dest_backup.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(ruta, dest_backup)
-
-            # Guardar en el formato destino
+            from io import BytesIO
+            buf = BytesIO()
             if formato_destino.lower() == "png":
-                # PNG 100% Calidad (sin pérdidas)
-                img.save(ruta_salida, format="PNG", optimize=True, compress_level=6)
+                img.save(buf, format="PNG", optimize=True, compress_level=6)
             else:
-                # WebP
                 if calidad >= 100:
-                    img.save(ruta_salida, format="WEBP", quality=100, method=6, lossless=True)
+                    img.save(buf, format="WEBP", quality=100, method=6, lossless=True)
                 else:
-                    img.save(ruta_salida, format="WEBP", quality=calidad, method=6)
+                    img.save(buf, format="WEBP", quality=calidad, method=4)
+            out_bytes = buf.getvalue()
 
-            res["tam_nuevo"] = ruta_salida.stat().st_size
+        # Modo simulación (Dry-Run)
+        if dry_run:
+            res["tam_nuevo"] = len(out_bytes)
+            return res
 
-            # Eliminar original si cambió de extensión y está habilitada la opción
-            if eliminar_original and not mismo_archivo and ruta.exists():
-                ruta.unlink()
+        # Realizar backup si está configurado
+        if backup_dir:
+            try:
+                rel_backup = ruta.relative_to(backup_dir.parent)
+            except ValueError:
+                rel_backup = ruta.name
+            dest_backup = backup_dir / rel_backup
+            dest_backup.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ruta, dest_backup)
+
+        # Guardar en el formato destino
+        ruta_salida.write_bytes(out_bytes)
+        res["tam_nuevo"] = len(out_bytes)
+
+        # Eliminar original si cambió de extensión y está habilitada la opción
+        if eliminar_original and not mismo_archivo and ruta.exists():
+            ruta.unlink()
 
     except Exception as e:
         res["error"] = str(e)
@@ -437,12 +440,17 @@ def main():
         help="Forzar recompresión de imágenes que ya están en el formato destino"
     )
     parser.add_argument(
+        "--max-lado", type=int, default=1400,
+        help="Lado máximo en píxeles (ej. 1400 o 1200; 0 para sin límite). Default: 1400"
+    )
+    parser.add_argument(
         "-i", "--interactivo", action="store_true",
         help="Forzar menú interactivo paso a paso"
     )
 
     args = parser.parse_args()
     raiz_proyecto = Path.cwd().resolve()
+    max_lado = args.max_lado if args.max_lado and args.max_lado > 0 else None
 
     # Si se solicitó abrir directamente el explorador
     if args.explorador:
@@ -511,6 +519,7 @@ def main():
     print(f"   🧪 Dry-run (prueba) : {'SÍ — sin cambios reales' if dry_run else 'No'}")
     print(f"   ⚡ Caché            : {'Ignorado (--forzar)' if forzar else f'{len(cache)} registros'}")
     print(f"   🔄 Recompresión     : {'Habilitada (--recomprimir)' if recomprimir else 'Deshabilitada (omite imágenes en formato destino)'}")
+    print(f"   📐 Lado Máximo      : {f'{max_lado} px' if max_lado else 'Sin límite'}")
     print(f"{'='*65}\n")
 
     todas = buscar_imagenes(dir_seleccionado, excluir=backup_dir)
@@ -529,12 +538,21 @@ def main():
         dest = img.with_suffix(ext_dest)
         es_mismo_formato = (img.suffix.lower() == ext_dest)
 
-        # Omitir si ya está en el formato deseado y no se pidió recomprimir
-        if es_mismo_formato and not recomprimir:
+        # Si ya está en formato destino, comprobar si supera max_lado antes de omitir
+        excede_max_lado = False
+        if es_mismo_formato and max_lado:
+            try:
+                with Image.open(img) as im_chk:
+                    excede_max_lado = max(im_chk.size) > max_lado
+            except Exception:
+                pass
+
+        # Omitir si ya está en el formato deseado, no excede max_lado y no se pidió recomprimir
+        if es_mismo_formato and not recomprimir and not excede_max_lado:
             ya_en_formato += 1
             continue
 
-        if not forzar and ya_procesado(img, dest, dir_seleccionado, cache):
+        if not forzar and not excede_max_lado and ya_procesado(img, dest, dir_seleccionado, cache):
             omitidas += 1
         else:
             pendientes.append(img)
@@ -572,7 +590,8 @@ def main():
             calidad=calidad,
             backup_dir=backup_dir,
             eliminar_original=eliminar_original,
-            dry_run=dry_run
+            dry_run=dry_run,
+            max_lado=max_lado,
         )
         total_orig += res["tam_orig"]
 
@@ -593,7 +612,11 @@ def main():
         if not dry_run and res["ruta_salida"].exists():
             key = clave_cache(res["ruta_salida"], dir_seleccionado)
             cache[key] = snapshot(res["ruta_salida"])
-            guardar_cache(dir_seleccionado, cache)
+            if procesadas % 50 == 0:
+                guardar_cache(dir_seleccionado, cache)
+
+    if not dry_run and procesadas > 0:
+        guardar_cache(dir_seleccionado, cache)
 
     elapsed = (datetime.now() - inicio).total_seconds()
     ahorro = total_orig - total_nuevo
