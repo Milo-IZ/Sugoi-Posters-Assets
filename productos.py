@@ -1,6 +1,7 @@
 import os
 import re
 import sys
+import unicodedata
 from datetime import date, datetime
 from urllib.parse import quote
 
@@ -25,52 +26,72 @@ def buscar_imagenes_rec(carpeta):
                 encontradas.append(os.path.join(raiz, f))
     return sorted(encontradas, key=lambda p: os.path.relpath(p, carpeta).lower())
 
-# Configuración del repo
-usuario = "Milo-IZ"
-repositorio = "sugoi-posters-assets"
-rama = "main"
-
-# Carpeta base del repositorio (siempre absoluta basada en la ubicación del script)
+# Carpeta base del repositorio de assets (funciona desde Sugoi-Posters-Assets o SugoiPosters-Web-App/tools)
 DIR_SCRIPT = os.path.dirname(os.path.abspath(__file__))
-carpeta_base = DIR_SCRIPT
+_candidatos_assets = [
+    DIR_SCRIPT,
+    os.path.normpath(os.path.join(DIR_SCRIPT, "..", "..", "Sugoi-Posters-Assets")),
+]
+carpeta_base = next(
+    (p for p in _candidatos_assets if os.path.isdir(os.path.join(p, "C-a"))),
+    DIR_SCRIPT,
+)
 
 # Ruta al products.dart existente (para conservar fechas ya registradas).
 RUTAS_BUSQUEDA_DART = [
-    os.path.join(DIR_SCRIPT, "..", "SugoiPosters-Web-App", "lib", "data", "products.dart"),
-    os.path.join(DIR_SCRIPT, "products.dart"),
-    r"D:\Proyectos\sugoi_posters_deploys\lib\data\products.dart",
+    os.path.normpath(os.path.join(carpeta_base, "..", "SugoiPosters-Web-App", "lib", "data", "products.dart")),
+    os.path.normpath(os.path.join(DIR_SCRIPT, "..", "lib", "data", "products.dart")),
+    os.path.join(carpeta_base, "products.dart"),
 ]
 PRODUCTOS_DART_EXISTENTE = next((p for p in RUTAS_BUSQUEDA_DART if os.path.exists(p)), RUTAS_BUSQUEDA_DART[0])
 
 # ── Cargar fechas ya registradas ─────────────────────────────────────────────
-def _leer_fechas_existentes(path: str) -> dict[str, str]:
-    """Devuelve {nombre_producto: dateAdded} del products.dart actual."""
+def _clave_normalizada(nombre: str) -> str:
+    """Clave ASCII canónica para conservar dateAdded incluso tras normalizar nombres."""
+    s = re.sub(r"(?<![A-Za-z])([Nn])[°º]\s*(\d+)", r"\1o \2", nombre)
+    s = s.replace("°", "o").replace("º", "o")
+    s = unicodedata.normalize("NFKD", s)
+    s = "".join(ch for ch in s if not unicodedata.combining(ch))
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def _leer_fechas_existentes(path: str) -> tuple[dict[str, str], dict[str, str]]:
+    """Devuelve ({nombre_exacto: dateAdded}, {clave_ascii: dateAdded}) del products.dart actual."""
     try:
         with open(path, encoding="utf-8") as f:
             content = f.read()
-        result = {}
+        exact: dict[str, str] = {}
+        norm: dict[str, str] = {}
         # Busca pares nombre / dateAdded dentro del mismo bloque Product(...)
         for bloque in re.finditer(r'Product\s*\(.*?\n  \)', content, re.DOTALL):
             b = bloque.group(0)
             n = re.search(r'nombre:\s*"([^"]+)"', b)
             d = re.search(r'dateAdded:\s*"([^"]+)"', b)
             if n and d:
-                result[n.group(1)] = d.group(1)
-        return result
+                exact[n.group(1)] = d.group(1)
+                norm.setdefault(_clave_normalizada(n.group(1)), d.group(1))
+        return exact, norm
     except FileNotFoundError:
-        return {}
+        return {}, {}
 
-_fechas_existentes: dict[str, str] = _leer_fechas_existentes(PRODUCTOS_DART_EXISTENTE)
+_fechas_existentes, _fechas_normalizadas = _leer_fechas_existentes(PRODUCTOS_DART_EXISTENTE)
+_nuevos_detectados: list[str] = []
 
 def _fecha_para(nombre_producto: str, rutas_locales: list[str]) -> str:
     """
     Retorna la fecha ISO para dateAdded:
-      - Si el producto YA existe en products.dart → conserva su fecha.
+      - Si el producto YA existe en products.dart (exacto o normalizado) → conserva su fecha.
       - Si es NUEVO → usa el mtime más reciente de sus imágenes locales.
       - Fallback: fecha de hoy.
     """
     if nombre_producto in _fechas_existentes:
         return _fechas_existentes[nombre_producto]
+
+    clave_norm = _clave_normalizada(nombre_producto)
+    if clave_norm in _fechas_normalizadas:
+        return _fechas_normalizadas[clave_norm]
+
+    _nuevos_detectados.append(nombre_producto)
 
     # Producto nuevo: tomar la fecha de modificación más reciente de los archivos
     tiempos = []
@@ -94,13 +115,16 @@ categorias = {
     "Pol": {"nombre": "Polaroid",  "categoria": "Polaroids", "precio": "20",  "descripcion": "Polaroid coleccionable con acabado especial. Llévate un recuerdo único de tu anime favorito en formato de bolsillo."},
 }
 
-# URL base del CDN propio en Cloudflare R2 (elimina alertas de WhatsApp y doble salto wsrv.nl)
+# URL base del CDN propio en Cloudflare R2 (bucket: sugoi-posters-assets)
 base_url = "https://img.sugoipostershn.com/"
+_rutas_no_ascii: list[str] = []
 
 
 def construir_url_imagen(ruta_local: str) -> str:
     """Construye una URL ASCII segura (percent-encoded) para R2 y WhatsApp."""
     relative_path = os.path.relpath(ruta_local, carpeta_base).replace("\\", "/")
+    if not relative_path.isascii():
+        _rutas_no_ascii.append(relative_path)
     return base_url + quote(relative_path, safe="/-_.!~*'()")
 
 
@@ -347,7 +371,7 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
   ),''')
 
 # --- GENERAR ARCHIVO DART ---
-output_local = os.path.join(DIR_SCRIPT, "products.dart")
+output_local = os.path.join(carpeta_base, "products.dart")
 with open(output_local, "w", encoding="utf-8") as f:
     f.write("import '../models/product.dart';\n\n")
     f.write("const List<Product> productos = [\n")
@@ -355,7 +379,7 @@ with open(output_local, "w", encoding="utf-8") as f:
     f.write("\n];\n")
 
 # Sincronizar automáticamente con SugoiPosters-Web-App si la carpeta existe
-output_webapp = os.path.join(DIR_SCRIPT, "..", "SugoiPosters-Web-App", "lib", "data", "products.dart")
+output_webapp = os.path.normpath(os.path.join(carpeta_base, "..", "SugoiPosters-Web-App", "lib", "data", "products.dart"))
 webapp_sync_ok = False
 if os.path.exists(os.path.dirname(output_webapp)):
     try:
@@ -365,14 +389,17 @@ if os.path.exists(os.path.dirname(output_webapp)):
     except Exception as e:
         print(f"⚠️ No se pudo copiar a Web-App: {e}")
 
-nuevos = [p for p in productos if p.split('dateAdded: "')[1].split('"')[0] not in _fechas_existentes.values()
-          or any(n not in _fechas_existentes for n in [p.split('nombre: "')[1].split('"')[0]])]
-n_nuevos = sum(1 for p in productos
-               if p.split('nombre: "')[1].split('"')[0] not in _fechas_existentes)
-print(f"✅ Archivo 'products.dart' generado con {len(productos)} productos.")
+n_nuevos = len(_nuevos_detectados)
+print(f"✅ Archivo 'products.dart' generado con {len(productos)} productos ({base_url}).")
 if webapp_sync_ok:
     print(f"🔄 Sincronizado automáticamente en: {os.path.normpath(output_webapp)}")
 if n_nuevos:
     print(f"   🆕 {n_nuevos} producto(s) nuevo(s) → dateAdded asignado por mtime de archivos.")
 else:
-    print(f"   ✔  Sin productos nuevos detectados.")
+    print(f"   ✔  Sin productos nuevos detectados.")
+if _rutas_no_ascii:
+    print(
+        f"   ⚠️  {len(_rutas_no_ascii)} ruta(s) contienen caracteres no-ASCII. "
+        "Ejecuta 'python Quitar_espacios.py' antes de hacer push para mantener URLs limpias."
+    )
+print("   ☁️  Siguiente paso: haz 'git push' en Sugoi-Posters-Assets para sincronizar Cloudflare R2 automáticamente.")

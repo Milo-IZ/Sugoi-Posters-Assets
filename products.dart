@@ -4540,23 +4540,23 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Sōsō no Frieren #1",
+    nombre: "Camisa Soso no Frieren #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Frieren_Beyond_The_Journey/S%C5%8Ds%C5%8D_no_Frieren_1/S%C5%8Ds%C5%8D_no_Frieren/S%C5%8Ds%C5%8D_no_Frieren.webp"
+      "https://img.sugoipostershn.com/C-a/Frieren_Beyond_The_Journey/Soso_no_Frieren_1/Soso_no_Frieren/Soso_no_Frieren.webp"
     ],
     subcategoria: "Frieren Beyond The Journey",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Sōsō no Frieren #2",
+    nombre: "Camisa Soso no Frieren #2",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Frieren_Beyond_The_Journey/S%C5%8Ds%C5%8D_no_Frieren_2/S%C5%8Ds%C5%8D_no_Frieren__2/S%C5%8Ds%C5%8D_no_Frieren__2.webp"
+      "https://img.sugoipostershn.com/C-a/Frieren_Beyond_The_Journey/Soso_no_Frieren_2/Soso_no_Frieren__2/Soso_no_Frieren__2.webp"
     ],
     subcategoria: "Frieren Beyond The Journey",
     dateAdded: "2026-08-17",
@@ -6657,9 +6657,9 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Comandante_Yosida/Comandante_Yosida.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Comandante_Yosida/Comandante_Yosida.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
@@ -6668,9 +6668,9 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Hina/Hina.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Hina/Hina.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
@@ -6679,9 +6679,9 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kafka_1/Kafka/Kafka.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kafka_1/Kafka/Kafka.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
@@ -6690,9 +6690,9 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kafka_2/Kafka/Kafka.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kafka_2/Kafka/Kafka.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
@@ -6701,75 +6701,75 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_Kawai/Kaiju_Kawai.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_Kawai/Kaiju_Kawai.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Kaiju N°8 #1",
+    nombre: "Camisa Kaiju No 8 #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_N%C2%B08_1/Kaiju_N%C2%B08/Kaiju_N%C2%B08.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_No_8_1/Kaiju_No_8/Kaiju_No_8.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Kaiju N°8 #2",
+    nombre: "Camisa Kaiju No 8 #2",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_N%C2%B08_2/Kaiju_N%C2%B08/Kaiju_N%C2%B08.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_No_8_2/Kaiju_No_8/Kaiju_No_8.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Kaiju N°8 #3",
+    nombre: "Camisa Kaiju No 8 #3",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_N%C2%B08_3/Kaiju_N%C2%B08/Kaiju_N%C2%B08.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_No_8_3/Kaiju_No_8/Kaiju_No_8.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Kaiju N°8 #4",
+    nombre: "Camisa Kaiju No 8 #4",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_N%C2%B08_4/Kaiju_N%C2%B08/Kaiju_N%C2%B08.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_No_8_4/Kaiju_No_8/Kaiju_No_8.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Kaiju N°8 #5",
+    nombre: "Camisa Kaiju No 8 #5",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_N%C2%B08_5/Kaiju_N%C2%B08/Kaiju_N%C2%B08.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_No_8_5/Kaiju_No_8/Kaiju_No_8.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Camisa Kaiju N°8 #6",
+    nombre: "Camisa Kaiju No 8 #6",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Kaiju_N%C2%B08_6/Kaiju_N%C2%B08/Kaiju_N%C2%B08.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Kaiju_No_8_6/Kaiju_No_8/Kaiju_No_8.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
@@ -6778,9 +6778,9 @@ const List<Product> productos = [
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
     categoria: "Camisas",
     imagenes: [
-      "https://img.sugoipostershn.com/C-a/Kaiju_N%C2%B08/Reno_Ichikawa/Reno_Ichikawa.webp"
+      "https://img.sugoipostershn.com/C-a/Kaiju_No_8/Reno_Ichikawa/Reno_Ichikawa.webp"
     ],
-    subcategoria: "Kaiju N°8",
+    subcategoria: "Kaiju No 8",
     dateAdded: "2026-08-17",
   ),
   Product(
@@ -11519,12 +11519,12 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
-    nombre: "Separador Kyōka Izum",
+    nombre: "Separador Kyoka Izum",
     precio: "25",
     descripcion: "Separador de diseño exclusivo para que nunca pierdas la página en tus mangas y libros. Compacto, resistente y coleccionable.",
     categoria: "Separadores",
     imagenes: [
-      "https://img.sugoipostershn.com/S-e/Bungou_Stray_Dogs/Ky%C5%8Dka_Izum.webp"
+      "https://img.sugoipostershn.com/S-e/Bungou_Stray_Dogs/Kyoka_Izum.webp"
     ],
     subcategoria: "Bungou Stray Dogs",
     dateAdded: "2026-08-17",
