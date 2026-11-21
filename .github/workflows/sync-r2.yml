@@ -1,0 +1,67 @@
+name: Sync Assets to Cloudflare R2
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "C-a/**"
+      - "S-u/**"
+      - "P-o/**"
+      - "S-e/**"
+      - "Pol/**"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Modo de sincronización"
+        required: true
+        default: "full"
+        type: choice
+        options:
+          - full
+          - full_prune
+          - force_thumbs
+
+concurrency:
+  group: sync-r2
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --no-cache-dir boto3 Pillow
+
+      - name: Sync images & thumbnails to Cloudflare R2
+        env:
+          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
+          R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME || 'sugoi-posters-assets' }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ inputs.mode }}" in
+              full_prune)
+                python sync_r2.py --full --prune
+                ;;
+              force_thumbs)
+                python sync_r2.py --full --force-thumbs
+                ;;
+              *)
+                python sync_r2.py --full
+                ;;
+            esac
+          else
+            python sync_r2.py --git-range "${{ github.event.before }}" "${{ github.sha }}"
+          fi

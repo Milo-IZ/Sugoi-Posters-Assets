@@ -2,6 +2,7 @@ import os
 import re
 import sys
 from datetime import date, datetime
+from urllib.parse import quote
 
 # Evita UnicodeEncodeError con los emojis al imprimir en consolas Windows (cp1252)
 try:
@@ -93,8 +94,14 @@ categorias = {
     "Pol": {"nombre": "Polaroid",  "categoria": "Polaroids", "precio": "20",  "descripcion": "Polaroid coleccionable con acabado especial. Llévate un recuerdo único de tu anime favorito en formato de bolsillo."},
 }
 
-# URL base
-base_url = f"https://raw.githubusercontent.com/{usuario}/{repositorio}/{rama}/"
+# URL base del CDN propio en Cloudflare R2 (elimina alertas de WhatsApp y doble salto wsrv.nl)
+base_url = "https://img.sugoipostershn.com/"
+
+
+def construir_url_imagen(ruta_local: str) -> str:
+    """Construye una URL ASCII segura (percent-encoded) para R2 y WhatsApp."""
+    relative_path = os.path.relpath(ruta_local, carpeta_base).replace("\\", "/")
+    return base_url + quote(relative_path, safe="/-_.!~*'()")
 
 
 productos = []
@@ -195,7 +202,7 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                     if f.lower().endswith((".png", ".jpg", ".jpeg", ".webp"))
                 )
                 imagenes = [
-                    base_url + os.path.relpath(os.path.join(subcategoria_path, f), carpeta_base).replace("\\", "/")
+                    construir_url_imagen(os.path.join(subcategoria_path, f))
                     for f in archivos_pers
                 ]
                 if not imagenes:
@@ -236,7 +243,7 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                         nombre_base = normalize_hashes(nombre_base)
 
                         imagenes_variante = [
-                            base_url + os.path.relpath(ruta, carpeta_base).replace("\\", "/")
+                            construir_url_imagen(ruta)
                             for ruta in archivos_variante
                         ]
                         # Mostrar el número tal cual si existe; si no existe, usar 1
@@ -260,8 +267,7 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
             if archivos_directos:
                 for file in archivos_directos:
                     ruta_local = os.path.join(subcategoria_path, file)
-                    relative_path = os.path.relpath(ruta_local, carpeta_base).replace("\\", "/")
-                    url = base_url + relative_path
+                    url = construir_url_imagen(ruta_local)
                     personaje = limpiar_nombre(file)
                     personaje = normalize_hashes(personaje)
                     
@@ -299,8 +305,7 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                 
                 # Caso A: Archivo de imagen directo
                 if os.path.isfile(ruta_elemento) and elemento.lower().endswith((".png", ".jpg", ".jpeg", ".webp")):
-                    relative_path = os.path.relpath(ruta_elemento, carpeta_base).replace("\\", "/")
-                    url = base_url + relative_path
+                    url = construir_url_imagen(ruta_elemento)
                     personaje = limpiar_nombre(elemento)
                     personaje = normalize_hashes(personaje)
 
@@ -326,7 +331,7 @@ for categoria_dir in sorted(os.listdir(carpeta_base)):
                         numero_display = numero_carpeta if numero_carpeta > 0 else 1
 
                         nombre_producto = f"{nombre_categoria} {nombre_base} #{numero_display}"
-                        imagenes_internas = [base_url + os.path.relpath(ruta, carpeta_base).replace("\\", "/") for ruta in archivos_internos]
+                        imagenes_internas = [construir_url_imagen(ruta) for ruta in archivos_internos]
                         imagenes_dart = "[\n" + ",\n".join([f'      "{img}"' for img in imagenes_internas]) + "\n    ]"
                         rutas_locales_int = archivos_internos
                         fecha = _fecha_para(nombre_producto, rutas_locales_int)
