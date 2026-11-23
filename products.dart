@@ -4804,6 +4804,127 @@ const List<Product> productos = [
     dateAdded: "2026-08-17",
   ),
   Product(
+    nombre: "Camisa GTA-VI #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_1/GTA-VI_1.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #10",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_10/GTA-VI_10.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #11",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_11/GTA-VI_11.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_2/GTA-VI_2.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #3",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_3/GTA-VI_3.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #4",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_4/GTA-VI_4.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #5",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_5/GTA-VI_5.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #6",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_6/GTA-VI_6.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #7",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_7/GTA-VI_7.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #8",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_8/GTA-VI_8.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GTA-VI #9",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/GTA_VI/GTA-VI_9/GTA-VI_9.webp"
+    ],
+    subcategoria: "GTA VI",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
     nombre: "Camisa Enjin #1",
     precio: "280",
     descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
@@ -7776,6 +7897,215 @@ const List<Product> productos = [
       "https://img.sugoipostershn.com/C-a/Kuromi/KURUMI_9/KURUMI_9.webp"
     ],
     subcategoria: "Kuromi",
+    dateAdded: "2026-08-17",
+  ),
+  Product(
+    nombre: "Camisa CYCLOPS #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/CYCLOPS_1/CYCLOPS_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DOOM RAMON #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DOOM_RAMON_1/DOOM_RAMON_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_1/DR_DOOM_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #10",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_10/DR_DOOM_10.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #11",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_11/DR_DOOM_11.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_2/DR_DOOM_2.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #3",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_3/DR_DOOM_3.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #4",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_4/DR_DOOM_4.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #5",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_5/DR_DOOM_5.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #6",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_6/DR_DOOM_6.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #7",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_7/DR_DOOM_7.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #8",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_8/DR_DOOM_8.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa DR DOOM #9",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/DR_DOOM_9/DR_DOOM_9.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa GAMBIT #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/GAMBIT_1/GAMBIT_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa MARVEL DOOMSDAY #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/MARVEL_DOOMSDAY_1/MARVEL_DOOMSDAY_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa MARVEL DOOMSDAY #2",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/MARVEL_DOOMSDAY_2/MARVEL_DOOMSDAY_2.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa Magneto #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/Magneto_1/Magneto_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa PHOENIX #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/PHOENIX_1/PHOENIX_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
+    dateAdded: "2026-11-23",
+  ),
+  Product(
+    nombre: "Camisa Thor #1",
+    precio: "280",
+    descripcion: "Camisa de alta calidad inspirada en tu anime favorito. Ideal para el día a día o coleccionar como parte de tu pasión otaku.",
+    categoria: "Camisas",
+    imagenes: [
+      "https://img.sugoipostershn.com/C-a/Marvel_Doomsday/Thor_1/Thor_1.webp"
+    ],
+    subcategoria: "Marvel Doomsday",
     dateAdded: "2026-08-17",
   ),
   Product(
